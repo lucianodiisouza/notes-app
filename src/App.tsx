@@ -16,7 +16,7 @@ const App = () => {
   const [cards, setCards] = useState<CardProps[]>([]);
 
   useEffect(() => {
-    if (cards.length > 0) {
+    if (cards) {
       localStorage.setItem("cards", JSON.stringify(cards));
     }
   }, [cards]);
@@ -68,13 +68,10 @@ const App = () => {
   const deleteCard = (id: number) => {
     setMode("delete");
     try {
-      if (cards.length > 1) {
+      if (cards.length > 0) {
         const newCards = cards.filter((card) => card.id !== id);
         console.log(newCards);
         setCards(newCards);
-        toast.success("Card deleted successfully");
-      } else {
-        setCards([]);
         toast.success("Card deleted successfully");
       }
     } catch (err) {
