@@ -22,7 +22,9 @@ const Modal = ({ children, show, hide, mode }: ModalProps) => {
       <div className="modal">
         <div className="modal-header">
           {mode === "create" ? "Create note" : "Edit note"}
-          <button onClick={hide}>&times;</button>
+          <button onClick={hide} title="close">
+            &times;
+          </button>
         </div>
         <div className="modal-body">{children}</div>
 

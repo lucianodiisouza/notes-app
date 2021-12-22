@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { AddCard, Card, Header, Modal } from "./components";
+import { AddCard, Card, Form, Header, Modal } from "./components";
 import { CardProps } from "./components/Card/types";
 import { sortColors } from "./utils/colors";
 
@@ -104,7 +104,7 @@ const App = () => {
         </div>
       </main>
       <Modal hide={closeModalWindow} show={shouldOpenModal} mode={mode}>
-        <p>teste</p>
+        <Form />
       </Modal>
     </>
   );
