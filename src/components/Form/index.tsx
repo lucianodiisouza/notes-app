@@ -14,6 +14,8 @@ const Form = ({ formData, setFormData, readonly }: FormProps) => {
           placeholder="Title"
           value={formData?.title || ""}
           onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+          minLength={1}
+          maxLength={10}
           required
           disabled={readonly}
         />
@@ -28,6 +30,8 @@ const Form = ({ formData, setFormData, readonly }: FormProps) => {
           onChange={(e) =>
             setFormData({ ...formData, subtitle: e.target.value })
           }
+          minLength={1}
+          maxLength={10}
           required
           disabled={readonly}
         />

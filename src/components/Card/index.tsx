@@ -13,21 +13,25 @@ const Card = ({
   deleteItem,
   view,
 }: CardProps) => {
-  const viewContent = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    e.stopPropagation();
-    view && view();
-  };
   return (
-    <div
-      className="card"
-      style={{ backgroundColor: color }}
-      onClick={(e) => viewContent(e)}
-    >
+    <div className="card" style={{ backgroundColor: color }} onClick={view}>
       <div className="floating-container">
-        <button onClick={edit} title="Edit note">
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            edit && edit();
+          }}
+          title="Edit note"
+        >
           <img src={editIcon} alt="Edit note" />
         </button>
-        <button onClick={deleteItem} title="Delete note">
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            deleteItem && deleteItem();
+          }}
+          title="Delete note"
+        >
           <img src={deleteIcon} alt="Delete note" />
         </button>
       </div>
