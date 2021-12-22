@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { AddCard, Card, Header } from "./components";
 import { CardProps } from "./components/Card/types";
+import { sortColors } from "./utils/colors";
 
 const App = () => {
   const [cards, setCards] = useState<CardProps[]>([
@@ -87,7 +88,13 @@ const App = () => {
           <AddCard onClick={addCard} />
           {length > 0 ? (
             cards.map((card, index) => (
-              <Card title="title" subtitle="subtitle" date="date" key={index} />
+              <Card
+                color={sortColors()}
+                title="title"
+                subtitle="subtitle"
+                date="date"
+                key={index}
+              />
             ))
           ) : (
             <p>You dont have any notes</p>
