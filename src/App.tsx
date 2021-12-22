@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AddCard, Card, Form, Header, Modal } from "./components";
 import { CardProps } from "./components/Card/types";
 import { FormDataProps } from "./components/Form/types";
@@ -9,6 +9,12 @@ const App = () => {
   const [mode, setMode] = useState<"create" | "edit" | "delete">("create");
   const [formData, setFormData] = useState<FormDataProps>();
   const [cards, setCards] = useState<CardProps[]>([]);
+
+  useEffect(() => {
+    if (cards.length > 0) {
+      localStorage.setItem("cards", JSON.stringify(cards));
+    }
+  }, [cards]);
 
   const openModalWindow = () => {
     setShouldOpenModal(true);
