@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { AddCard, Card, Form, Header, Modal } from "./components";
 import { CardProps } from "./components/Card/types";
+import { FormDataProps } from "./components/Form/types";
 import { sortColors } from "./utils/colors";
 
 const App = () => {
   const [shouldOpenModal, setShouldOpenModal] = useState(false);
   const [mode, setMode] = useState<"create" | "edit" | "delete">("create");
+  const [formData, setFormData] = useState<FormDataProps>();
   const [cards, setCards] = useState<CardProps[]>([
     {
       title: "Title",
@@ -104,7 +106,7 @@ const App = () => {
         </div>
       </main>
       <Modal hide={closeModalWindow} show={shouldOpenModal} mode={mode}>
-        <Form />
+        <Form formData={formData} setFormData={setFormData} />
       </Modal>
     </>
   );
