@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+
 import { AddCard, Card, Form, Header, Modal } from "./components";
 import { CardProps } from "./components/Card/types";
 import { FormDataProps } from "./components/Form/types";
 import { sortColors } from "./utils/colors";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   const [shouldOpenModal, setShouldOpenModal] = useState(false);
@@ -38,6 +41,13 @@ const App = () => {
     openModalWindow();
   };
 
+  const editCard = (id: number) => {
+    setMode("edit");
+    const card = cards.find((card) => card.id === id);
+    setFormData(card);
+    openModalWindow();
+  };
+
   const cleanData = () => {
     setFormData({
       title: "",
@@ -46,17 +56,11 @@ const App = () => {
     });
   };
 
-  const editCard = (id: number) => {
-    setMode("edit");
-    const card = cards.find((card) => card.id === id);
-    setFormData(card);
-    openModalWindow();
-  };
-
   const deleteCard = (id: number) => {
     setMode("delete");
     const newCards = cards.filter((card) => card.id !== id);
     setCards(newCards);
+    toast.success("Card deleted successfully");
   };
 
   const submitForm = () => {
@@ -73,7 +77,10 @@ const App = () => {
         };
         const newCards = [...cards, newItem];
         setCards(newCards);
+        toast.success("Card added successfully");
         closeModalWindow();
+      } else {
+        toast.error("Please fill all fields");
       }
     } else if (mode === "edit") {
       if (formData?.title && formData?.subtitle && formData?.content) {
@@ -85,12 +92,17 @@ const App = () => {
               title,
               subtitle,
               content,
+              id: Date.now(),
+              date: new Date().toLocaleString(),
             };
           }
+          toast.success("Card updated successfully");
           return card;
         });
         setCards(newCards);
         closeModalWindow();
+      } else {
+        toast.error("Please fill all fields");
       }
     }
   };
@@ -130,6 +142,7 @@ const App = () => {
       >
         <Form formData={formData} setFormData={setFormData} />
       </Modal>
+      <ToastContainer />
     </>
   );
 };
