@@ -11,10 +11,13 @@
 :root {
   --white: #ffffff;
   --black: #000000;
+  --default-bg: #1c1c1c;
+
   --radius-14: 14px;
 }
 
 body {
+  background-color: var(--default-bg);
   width: 100vw;
 }
 
