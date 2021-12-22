@@ -16,6 +16,13 @@ const App = () => {
     }
   }, [cards]);
 
+  useEffect(() => {
+    const storedCards = localStorage.getItem("cards");
+    if (storedCards) {
+      setCards(JSON.parse(storedCards));
+    }
+  }, []);
+
   const openModalWindow = () => {
     setShouldOpenModal(true);
   };
