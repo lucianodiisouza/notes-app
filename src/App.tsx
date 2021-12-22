@@ -1,8 +1,34 @@
 import { useState } from "react";
 import { AddCard, Card, Header } from "./components";
+import { CardProps } from "./components/Card/types";
 
 const App = () => {
-  const [cards, setCards] = useState([
+  const [cards, setCards] = useState<CardProps[]>([
+    {
+      title: "Title",
+      subtitle: "Subtitle",
+      date: "26th Mar 2021",
+    },
+    {
+      title: "Title",
+      subtitle: "Subtitle",
+      date: "26th Mar 2021",
+    },
+    {
+      title: "Title",
+      subtitle: "Subtitle",
+      date: "26th Mar 2021",
+    },
+    {
+      title: "Title",
+      subtitle: "Subtitle",
+      date: "26th Mar 2021",
+    },
+    {
+      title: "Title",
+      subtitle: "Subtitle",
+      date: "26th Mar 2021",
+    },
     {
       title: "Title",
       subtitle: "Subtitle",
@@ -52,19 +78,23 @@ const App = () => {
   const length = cards.length;
 
   return (
-    <div>
-      <Header />
-      <div className={length > 0 ? "cards-container" : "cards-container-empty"}>
-        <AddCard onClick={addCard} />
-        {length > 0 ? (
-          cards.map((card, index) => (
-            <Card title="title" subtitle="subtitle" date="date" key={index} />
-          ))
-        ) : (
-          <p>You dont have any notes</p>
-        )}
-      </div>
-    </div>
+    <>
+      <main>
+        <Header />
+        <div
+          className={length > 0 ? "cards-container" : "cards-container-empty"}
+        >
+          <AddCard onClick={addCard} />
+          {length > 0 ? (
+            cards.map((card, index) => (
+              <Card title="title" subtitle="subtitle" date="date" key={index} />
+            ))
+          ) : (
+            <p>You dont have any notes</p>
+          )}
+        </div>
+      </main>
+    </>
   );
 };
 
