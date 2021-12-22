@@ -1,3 +1,5 @@
+import MDEditor from "@uiw/react-md-editor";
+
 import "./styles.css";
 import { FormProps } from "./types";
 
@@ -30,15 +32,10 @@ const Form = ({ formData, setFormData }: FormProps) => {
       </div>
       <div className="form-group">
         <p className="label">Content</p>
-        <textarea
-          placeholder="type here"
-          className="textarea"
+        <MDEditor
           value={formData?.content || ""}
-          onChange={(e) =>
-            setFormData({ ...formData, content: e.target.value })
-          }
-          required
-        ></textarea>
+          onChange={(value) => setFormData({ ...formData, content: value })}
+        />
       </div>
     </form>
   );
