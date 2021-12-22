@@ -1,9 +1,5 @@
 import "./styles.css";
-
-type ButtonProps = {
-  children: React.ReactNode;
-  variant: string;
-};
+import { ButtonProps } from "./types";
 
 const Button = ({ children, variant, ...props }: ButtonProps) => {
   return (

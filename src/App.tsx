@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { AddCard, Button, Card, Header } from "./components";
+import { AddCard, Card, Header, Modal } from "./components";
 import { CardProps } from "./components/Card/types";
 import { sortColors } from "./utils/colors";
 
 const App = () => {
+  const [shouldOpenModal, setShouldOpenModal] = useState(false);
+  const [mode, setMode] = useState<"create" | "edit" | "delete">("create");
   const [cards, setCards] = useState<CardProps[]>([
     {
       title: "Title",
@@ -72,8 +74,13 @@ const App = () => {
     },
   ]);
 
+  const closeModalWindow = () => {
+    setShouldOpenModal(false);
+  };
+
   const addCard = () => {
-    console.log("do something");
+    setShouldOpenModal(true);
+    setMode("create");
   };
 
   const length = cards.length;
@@ -82,8 +89,7 @@ const App = () => {
     <>
       <main>
         <Header />
-        <Button variant="primary">Primary</Button>
-        <Button variant="secondary">secondary</Button>
+
         <div
           className={length > 0 ? "cards-container" : "cards-container-empty"}
         >
@@ -97,6 +103,9 @@ const App = () => {
           )}
         </div>
       </main>
+      <Modal hide={closeModalWindow} show={shouldOpenModal} mode={mode}>
+        <p>teste</p>
+      </Modal>
     </>
   );
 };
