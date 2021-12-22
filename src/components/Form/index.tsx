@@ -3,7 +3,7 @@ import MDEditor from "@uiw/react-md-editor";
 import "./styles.css";
 import { FormProps } from "./types";
 
-const Form = ({ formData, setFormData }: FormProps) => {
+const Form = ({ formData, setFormData, readonly }: FormProps) => {
   return (
     <form>
       <div className="form-group">
@@ -15,6 +15,7 @@ const Form = ({ formData, setFormData }: FormProps) => {
           value={formData?.title || ""}
           onChange={(e) => setFormData({ ...formData, title: e.target.value })}
           required
+          disabled={readonly}
         />
       </div>
       <div className="form-group">
@@ -28,14 +29,22 @@ const Form = ({ formData, setFormData }: FormProps) => {
             setFormData({ ...formData, subtitle: e.target.value })
           }
           required
+          disabled={readonly}
         />
       </div>
       <div className="form-group">
         <p className="label">Content</p>
-        <MDEditor
-          value={formData?.content || ""}
-          onChange={(value) => setFormData({ ...formData, content: value })}
-        />
+
+        {readonly ? (
+          <div className="readonly-content">
+            <MDEditor.Markdown source={formData?.content} />
+          </div>
+        ) : (
+          <MDEditor
+            value={formData?.content || ""}
+            onChange={(value) => setFormData({ ...formData, content: value })}
+          />
+        )}
       </div>
     </form>
   );

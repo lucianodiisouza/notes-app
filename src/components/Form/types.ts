@@ -6,6 +6,7 @@ export type FormDataProps = {
 };
 
 export type FormProps = {
+  readonly: boolean;
   formData: FormDataProps | undefined;
   setFormData: React.Dispatch<React.SetStateAction<FormDataProps | undefined>>;
 };

@@ -7,4 +7,5 @@ export type CardProps = {
   color?: string;
   edit?: () => void;
   deleteItem?: () => void;
+  view?: () => void;
 };

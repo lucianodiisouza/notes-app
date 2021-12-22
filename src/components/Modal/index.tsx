@@ -25,14 +25,19 @@ const Modal = ({ children, show, hide, mode, submitForm }: ModalProps) => {
     >
       <div className="modal">
         <div className="modal-header">
-          {mode === "create" ? "Create note" : "Edit note"}
+          {mode === "create"
+            ? "Create note"
+            : mode === "read"
+            ? "Preview note"
+            : "Edit note"}
           <button onClick={hide} title="close">
             &times;
           </button>
         </div>
         <div className="modal-body">{children}</div>
-
-        <ModalButtons hide={hide} submitForm={submitForm} />
+        {mode !== "read" && (
+          <ModalButtons hide={hide} submitForm={submitForm} />
+        )}
       </div>
     </div>
   );

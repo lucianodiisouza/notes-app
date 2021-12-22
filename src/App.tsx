@@ -9,7 +9,9 @@ import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   const [shouldOpenModal, setShouldOpenModal] = useState(false);
-  const [mode, setMode] = useState<"create" | "edit" | "delete">("create");
+  const [mode, setMode] = useState<"create" | "edit" | "delete" | "read">(
+    "create"
+  );
   const [formData, setFormData] = useState<FormDataProps>();
   const [cards, setCards] = useState<CardProps[]>([]);
 
@@ -43,6 +45,13 @@ const App = () => {
 
   const editCard = (id: number) => {
     setMode("edit");
+    const card = cards.find((card) => card.id === id);
+    setFormData(card);
+    openModalWindow();
+  };
+
+  const viewCard = (id: number) => {
+    setMode("read");
     const card = cards.find((card) => card.id === id);
     setFormData(card);
     openModalWindow();
@@ -127,6 +136,7 @@ const App = () => {
                   key={index}
                   edit={() => editCard(card.id)}
                   deleteItem={() => deleteCard(card.id)}
+                  view={() => viewCard(card.id)}
                 />
               ))
           ) : (
@@ -140,7 +150,11 @@ const App = () => {
         mode={mode}
         submitForm={submitForm}
       >
-        <Form formData={formData} setFormData={setFormData} />
+        <Form
+          formData={formData}
+          setFormData={setFormData}
+          readonly={mode === "read"}
+        />
       </Modal>
       <ToastContainer />
     </>
