@@ -76,13 +76,30 @@ const App = () => {
     },
   ]);
 
+  const openModalWindow = () => {
+    setShouldOpenModal(true);
+  };
+
   const closeModalWindow = () => {
     setShouldOpenModal(false);
   };
 
   const addCard = () => {
-    setShouldOpenModal(true);
     setMode("create");
+    cleanData();
+    setShouldOpenModal(true);
+  };
+
+  const cleanData = () => {
+    setFormData({
+      title: "",
+      subtitle: "",
+      content: "",
+    });
+  };
+
+  const submitForm = () => {
+    console.log(formData);
   };
 
   const length = cards.length;
@@ -105,7 +122,12 @@ const App = () => {
           )}
         </div>
       </main>
-      <Modal hide={closeModalWindow} show={shouldOpenModal} mode={mode}>
+      <Modal
+        hide={closeModalWindow}
+        show={shouldOpenModal}
+        mode={mode}
+        submitForm={submitForm}
+      >
         <Form formData={formData} setFormData={setFormData} />
       </Modal>
     </>
