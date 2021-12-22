@@ -18,3 +18,13 @@ form input {
   border-radius: var(--radius-10);
   border: 1px solid var(--default-bg);
 }
+
+form textarea {
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 150px;
+  max-height: 333px;
+  padding: 10px;
+  border-radius: var(--radius-10);
+  border: 1px solid var(--default-bg);
+}
