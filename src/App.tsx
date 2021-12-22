@@ -1,4 +1,4 @@
-import { AddCard, Header } from "./components";
+import { AddCard, Card, Header } from "./components";
 
 const App = () => {
   const addCard = () => {
@@ -8,6 +8,7 @@ const App = () => {
     <div>
       <Header />
       <AddCard onClick={addCard} />
+      <Card title="title" subtitle="subtitle" date="date" />
     </div>
   );
 };

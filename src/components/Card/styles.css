@@ -1,0 +1,30 @@
+.card {
+  width: 236px;
+  height: 236px;
+  border-radius: var(--radius-14);
+  padding: 25px;
+  background: white;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-header h2 {
+  font-weight: 600;
+  color: var(--black);
+  font-size: 30px;
+  margin-bottom: 5px;
+}
+
+.card-header p {
+  font-weight: 500;
+  font-size: 20px;
+  color: var(--black);
+}
+
+.card-footer p {
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--black);
+}
