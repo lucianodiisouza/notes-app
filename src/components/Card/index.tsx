@@ -1,9 +1,5 @@
 import "./styles.css";
-type CardProps = {
-  title: string;
-  subtitle: string;
-  date: string;
-};
+import { CardProps } from "./types";
 
 const Card = ({ title, subtitle, date }: CardProps) => {
   return (
