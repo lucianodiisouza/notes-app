@@ -8,73 +8,7 @@ const App = () => {
   const [shouldOpenModal, setShouldOpenModal] = useState(false);
   const [mode, setMode] = useState<"create" | "edit" | "delete">("create");
   const [formData, setFormData] = useState<FormDataProps>();
-  const [cards, setCards] = useState<CardProps[]>([
-    {
-      title: "Title",
-      subtitle: "Subtitle",
-      date: "26th Mar 2021",
-    },
-    {
-      title: "Title",
-      subtitle: "Subtitle",
-      date: "26th Mar 2021",
-    },
-    {
-      title: "Title",
-      subtitle: "Subtitle",
-      date: "26th Mar 2021",
-    },
-    {
-      title: "Title",
-      subtitle: "Subtitle",
-      date: "26th Mar 2021",
-    },
-    {
-      title: "Title",
-      subtitle: "Subtitle",
-      date: "26th Mar 2021",
-    },
-    {
-      title: "Title",
-      subtitle: "Subtitle",
-      date: "26th Mar 2021",
-    },
-    {
-      title: "Title",
-      subtitle: "Subtitle",
-      date: "26th Mar 2021",
-    },
-    {
-      title: "Title",
-      subtitle: "Subtitle",
-      date: "26th Mar 2021",
-    },
-    {
-      title: "Title",
-      subtitle: "Subtitle",
-      date: "26th Mar 2021",
-    },
-    {
-      title: "Title",
-      subtitle: "Subtitle",
-      date: "26th Mar 2021",
-    },
-    {
-      title: "Title",
-      subtitle: "Subtitle",
-      date: "26th Mar 2021",
-    },
-    {
-      title: "Title",
-      subtitle: "Subtitle",
-      date: "26th Mar 2021",
-    },
-    {
-      title: "Title",
-      subtitle: "Subtitle",
-      date: "26th Mar 2021",
-    },
-  ]);
+  const [cards, setCards] = useState<CardProps[]>([]);
 
   const openModalWindow = () => {
     setShouldOpenModal(true);
@@ -87,7 +21,7 @@ const App = () => {
   const addCard = () => {
     setMode("create");
     cleanData();
-    setShouldOpenModal(true);
+    openModalWindow();
   };
 
   const cleanData = () => {
@@ -99,7 +33,39 @@ const App = () => {
   };
 
   const submitForm = () => {
-    console.log(formData);
+    if (mode === "create") {
+      if (formData?.title && formData?.subtitle && formData?.content) {
+        const { title, subtitle, content } = formData;
+        const newItem = {
+          title,
+          subtitle,
+          content,
+          id: Date.now(),
+          date: new Date().toLocaleString(),
+          cardColor: sortColors(),
+        };
+        const newCards = [...cards, newItem];
+        setCards(newCards);
+        closeModalWindow();
+      }
+    } else if (mode === "edit") {
+      if (formData?.title && formData?.subtitle && formData?.content) {
+        const { title, subtitle, content, id } = formData;
+        const newCards = cards.map((card) => {
+          if (card.id === id) {
+            return {
+              ...card,
+              title,
+              subtitle,
+              content,
+            };
+          }
+          return card;
+        });
+        setCards(newCards);
+        closeModalWindow();
+      }
+    }
   };
 
   const length = cards.length;

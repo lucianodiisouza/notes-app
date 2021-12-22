@@ -8,7 +8,11 @@ const ModalButtons = ({ hide, submitForm }: ModalButtonsProps) => {
       <Button onClick={hide} variant="primary">
         Cancel
       </Button>
-      {submitForm && <Button variant="secondary">Save</Button>}
+      {submitForm && (
+        <Button variant="secondary" onClick={submitForm}>
+          Save
+        </Button>
+      )}
     </div>
   );
 };
