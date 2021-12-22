@@ -67,9 +67,19 @@ const App = () => {
 
   const deleteCard = (id: number) => {
     setMode("delete");
-    const newCards = cards.filter((card) => card.id !== id);
-    setCards(newCards);
-    toast.success("Card deleted successfully");
+    try {
+      if (cards.length > 1) {
+        const newCards = cards.filter((card) => card.id !== id);
+        console.log(newCards);
+        setCards(newCards);
+        toast.success("Card deleted successfully");
+      } else {
+        setCards([]);
+        toast.success("Card deleted successfully");
+      }
+    } catch (err) {
+      toast.error("Error while deleting card");
+    }
   };
 
   const submitForm = () => {
