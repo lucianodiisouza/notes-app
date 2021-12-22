@@ -29,6 +29,7 @@ const App = () => {
 
   const closeModalWindow = () => {
     setShouldOpenModal(false);
+    cleanData();
   };
 
   const addCard = () => {
@@ -43,6 +44,19 @@ const App = () => {
       subtitle: "",
       content: "",
     });
+  };
+
+  const editCard = (id: number) => {
+    setMode("edit");
+    const card = cards.find((card) => card.id === id);
+    setFormData(card);
+    openModalWindow();
+  };
+
+  const deleteCard = (id: number) => {
+    setMode("delete");
+    const newCards = cards.filter((card) => card.id !== id);
+    setCards(newCards);
   };
 
   const submitForm = () => {
@@ -94,7 +108,12 @@ const App = () => {
           <AddCard onClick={addCard} />
           {length > 0 ? (
             cards.map((card, index) => (
-              <Card color={sortColors()} {...card} key={index} />
+              <Card
+                {...card}
+                key={index}
+                edit={() => editCard(card.id)}
+                deleteItem={() => deleteCard(card.id)}
+              />
             ))
           ) : (
             <p>You dont have any notes</p>

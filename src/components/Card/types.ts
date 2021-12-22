@@ -5,4 +5,6 @@ export type CardProps = {
   content: string;
   date: string;
   color?: string;
+  edit?: () => void;
+  deleteItem?: () => void;
 };
