@@ -88,13 +88,7 @@ const App = () => {
           <AddCard onClick={addCard} />
           {length > 0 ? (
             cards.map((card, index) => (
-              <Card
-                color={sortColors()}
-                title="title"
-                subtitle="subtitle"
-                date="date"
-                key={index}
-              />
+              <Card color={sortColors()} {...card} key={index} />
             ))
           ) : (
             <p>You dont have any notes</p>
