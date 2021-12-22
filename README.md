@@ -1,7 +1,7 @@
 # notes-app
 
-Deploy for main branch (what i do inside the 2hrs time window): https://elastic-mirzakhani-f5415e.netlify.app/
-Deploy for feat/finish-requirements branch (with some plus hours, i deliver it): https://epic-goodall-c46dcd.netlify.app/
+Deploy for main branch (what i do inside the 2hrs time window): https://elastic-mirzakhani-f5415e.netlify.app/ <br />
+Deploy for feat/finish-requirements branch (with some plus hours, i deliver it): https://epic-goodall-c46dcd.netlify.app/ <br />
 
 enjoy :) 
 
