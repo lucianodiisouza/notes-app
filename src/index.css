@@ -10,6 +10,8 @@
 
 :root {
   --white: #ffffff;
+  --black: #000000;
+  --radius-14: 14px;
 }
 
 body {

@@ -1,10 +1,13 @@
-import { Header } from "./components";
+import { AddCard, Header } from "./components";
 
 const App = () => {
+  const addCard = () => {
+    console.log("do something");
+  };
   return (
     <div>
       <Header />
-      <p>Cleaning project</p>
+      <AddCard onClick={addCard} />
     </div>
   );
 };

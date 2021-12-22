@@ -1,0 +1,15 @@
+.add-card-container {
+  width: 236px;
+  height: 236px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--black);
+  border: 1px dashed var(--white);
+  border-radius: var(--radius-14);
+}
+
+.add-card-container p {
+  font-size: 64px;
+  color: var(--white);
+}
