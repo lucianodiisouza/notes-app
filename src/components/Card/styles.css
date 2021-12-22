@@ -8,6 +8,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  position: relative;
 }
 
 .card-header h2 {
@@ -27,4 +29,19 @@
   font-weight: 500;
   font-size: 16px;
   color: var(--black);
+}
+
+/* Floating */
+.floating-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.floating-container button {
+  background: none;
+  border: none;
 }

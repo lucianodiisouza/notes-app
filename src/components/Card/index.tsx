@@ -1,6 +1,9 @@
 import "./styles.css";
 import { CardProps } from "./types";
 
+import editIcon from "../../assets/edit.svg";
+import deleteIcon from "../../assets/garbage.svg";
+
 const Card = ({
   title,
   subtitle,
@@ -9,14 +12,15 @@ const Card = ({
   edit,
   deleteItem,
 }: CardProps) => {
+  console.log(color);
   return (
     <div className="card" style={{ backgroundColor: color }}>
       <div className="floating-container">
         <button onClick={edit} title="Edit note">
-          E
+          <img src={editIcon} alt="Edit note" />
         </button>
         <button onClick={deleteItem} title="Delete note">
-          D
+          <img src={deleteIcon} alt="Delete note" />
         </button>
       </div>
 

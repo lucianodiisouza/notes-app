@@ -69,7 +69,7 @@ const App = () => {
           content,
           id: Date.now(),
           date: new Date().toLocaleString(),
-          cardColor: sortColors(),
+          color: sortColors(),
         };
         const newCards = [...cards, newItem];
         setCards(newCards);
@@ -107,14 +107,16 @@ const App = () => {
         >
           <AddCard onClick={addCard} />
           {length > 0 ? (
-            cards.map((card, index) => (
-              <Card
-                {...card}
-                key={index}
-                edit={() => editCard(card.id)}
-                deleteItem={() => deleteCard(card.id)}
-              />
-            ))
+            cards
+              .sort((a, b) => b.id - a.id)
+              .map((card, index) => (
+                <Card
+                  {...card}
+                  key={index}
+                  edit={() => editCard(card.id)}
+                  deleteItem={() => deleteCard(card.id)}
+                />
+              ))
           ) : (
             <p>You dont have any notes</p>
           )}
