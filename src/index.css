@@ -19,8 +19,34 @@
 body {
   background-color: var(--default-bg);
   width: 100vw;
+  height: 100vh;
 }
 
 button {
   cursor: pointer;
+}
+
+/* cards container */
+
+.cards-container {
+  padding: 48px 0px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(236px, 1fr));
+  gap: 40px;
+}
+
+/* empty cards container */
+
+.cards-container-empty {
+  height: calc(100vh - 100px);
+  margin-top: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.cards-container-empty p {
+  color: var(--white);
 }
