@@ -2,7 +2,48 @@ import { useState } from "react";
 import { AddCard, Card, Header } from "./components";
 
 const App = () => {
-  const [cards, setCards] = useState([]);
+  const [cards, setCards] = useState([
+    {
+      title: "Title",
+      subtitle: "Subtitle",
+      date: "26th Mar 2021",
+    },
+    {
+      title: "Title",
+      subtitle: "Subtitle",
+      date: "26th Mar 2021",
+    },
+    {
+      title: "Title",
+      subtitle: "Subtitle",
+      date: "26th Mar 2021",
+    },
+    {
+      title: "Title",
+      subtitle: "Subtitle",
+      date: "26th Mar 2021",
+    },
+    {
+      title: "Title",
+      subtitle: "Subtitle",
+      date: "26th Mar 2021",
+    },
+    {
+      title: "Title",
+      subtitle: "Subtitle",
+      date: "26th Mar 2021",
+    },
+    {
+      title: "Title",
+      subtitle: "Subtitle",
+      date: "26th Mar 2021",
+    },
+    {
+      title: "Title",
+      subtitle: "Subtitle",
+      date: "26th Mar 2021",
+    },
+  ]);
 
   const addCard = () => {
     console.log("do something");
