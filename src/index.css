@@ -14,12 +14,13 @@
   --default-bg: #1c1c1c;
 
   --radius-14: 14px;
+  --radius-10: 10px;
 }
 
 body {
   background-color: var(--default-bg);
   max-width: 100vw;
-  height: 100vh; 
+  height: 100vh;
 }
 
 main {

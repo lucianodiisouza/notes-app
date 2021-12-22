@@ -1,0 +1,24 @@
+.std-button {
+  background: none;
+  width: 149px;
+  height: 45px;
+  border-radius: var(--radius-10);
+  border: none;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.std-button:hover {
+  opacity: 0.8;
+  transition: 0.3s ease;
+}
+
+.primary {
+  border: 1px solid var(--black);
+  color: var(--black);
+}
+
+.secondary {
+  background-color: var(--black);
+  color: var(--white);
+}

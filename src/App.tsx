@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { AddCard, Card, Header } from "./components";
+import { AddCard, Button, Card, Header } from "./components";
 import { CardProps } from "./components/Card/types";
 import { sortColors } from "./utils/colors";
 
@@ -82,6 +82,8 @@ const App = () => {
     <>
       <main>
         <Header />
+        <Button variant="primary">Primary</Button>
+        <Button variant="secondary">secondary</Button>
         <div
           className={length > 0 ? "cards-container" : "cards-container-empty"}
         >
